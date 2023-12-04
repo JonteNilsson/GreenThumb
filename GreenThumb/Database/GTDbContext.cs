@@ -75,13 +75,54 @@ namespace GreenThumb.Database
 
             modelBuilder.Entity<InstructionModel>().HasData(new InstructionModel()
             {
+                Id = 1,
+                Instruction = "Water plant",
+                PlantId = 1
 
+            }, new InstructionModel()
+            {
+                Id = 2,
+                Instruction = "Water Plant",
+                PlantId = 2
+            }, new InstructionModel()
+            {
+                Id = 3,
+                Instruction = "Fertilize",
+                PlantId = 1
+            }, new InstructionModel()
+            {
+                Id = 4,
+                Instruction = "Remove weed",
+                PlantId = 3
+            }, new InstructionModel()
+            {
+                Id = 5,
+                Instruction = "Replant",
+                PlantId = 5
+            }, new InstructionModel()
+            {
+                Id = 6,
+                Instruction = "Add soil",
+                PlantId = 7
+            }, new InstructionModel()
+            {
+                Id = 7,
+                Instruction = "Cut away weeds",
+                PlantId = 4
+            });
 
+            modelBuilder.Entity<GardenModel>().HasData(new GardenModel()
+            {
+                Id = 1,
+                Name = "Eden",
+                UserId = 1,
+                Plants = new List<PlantModel>()
+                {
 
-
-
+                }
             });
         }
 
     }
 }
+

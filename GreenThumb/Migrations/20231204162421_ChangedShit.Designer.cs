@@ -3,6 +3,7 @@ using GreenThumb.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GreenThumb.Migrations
 {
     [DbContext(typeof(GTDbContext))]
-    partial class GTDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231204162421_ChangedShit")]
+    partial class ChangedShit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -60,14 +62,6 @@ namespace GreenThumb.Migrations
                         .IsUnique();
 
                     b.ToTable("Gardens");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Eden",
-                            UserId = 1
-                        });
                 });
 
             modelBuilder.Entity("GreenThumb.Models.InstructionModel", b =>
@@ -227,7 +221,7 @@ namespace GreenThumb.Migrations
                         new
                         {
                             Id = 1,
-                            Password = "bZeaGIrC9ZK6KZM562EYIQ==",
+                            Password = "Z79K15W+QQBB2v/HEF/qew==",
                             Username = "user"
                         });
                 });

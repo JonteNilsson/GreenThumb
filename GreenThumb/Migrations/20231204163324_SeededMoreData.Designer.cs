@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GreenThumb.Migrations
 {
     [DbContext(typeof(GTDbContext))]
-    [Migration("20231204131107_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20231204163324_SeededMoreData")]
+    partial class SeededMoreData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,16 +42,19 @@ namespace GreenThumb.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("name");
 
                     b.Property<int>("UserId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("user_id");
 
                     b.HasKey("Id");
 
@@ -59,62 +62,164 @@ namespace GreenThumb.Migrations
                         .IsUnique();
 
                     b.ToTable("Gardens");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Eden",
+                            UserId = 1
+                        });
                 });
 
             modelBuilder.Entity("GreenThumb.Models.InstructionModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Instruction")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("instruction");
 
-                    b.Property<int>("PlantsId")
-                        .HasColumnType("int");
+                    b.Property<int>("PlantId")
+                        .HasColumnType("int")
+                        .HasColumnName("plant_id");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PlantsId");
+                    b.HasIndex("PlantId");
 
                     b.ToTable("Instructions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Instruction = "Water plant",
+                            PlantId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Instruction = "Water Plant",
+                            PlantId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Instruction = "Fertilize",
+                            PlantId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Instruction = "Remove weed",
+                            PlantId = 3
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Instruction = "Replant",
+                            PlantId = 5
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Instruction = "Add soil",
+                            PlantId = 7
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Instruction = "Cut away weeds",
+                            PlantId = 4
+                        });
                 });
 
             modelBuilder.Entity("GreenThumb.Models.PlantModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("name");
 
                     b.HasKey("Id");
 
                     b.ToTable("Plants");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Sunflower"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Lilly"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Rose"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Cactus"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Bamboo"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Orchid"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Snake plant"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Eucalyptus"
+                        });
                 });
 
             modelBuilder.Entity("GreenThumb.Models.UserModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("password");
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("username");
 
                     b.HasKey("Id");
 
@@ -124,7 +229,7 @@ namespace GreenThumb.Migrations
                         new
                         {
                             Id = 1,
-                            Password = "iNsDDt/psZjsuLD7r8peWw==",
+                            Password = "bZeaGIrC9ZK6KZM562EYIQ==",
                             Username = "user"
                         });
                 });
@@ -157,13 +262,13 @@ namespace GreenThumb.Migrations
 
             modelBuilder.Entity("GreenThumb.Models.InstructionModel", b =>
                 {
-                    b.HasOne("GreenThumb.Models.PlantModel", "Plants")
+                    b.HasOne("GreenThumb.Models.PlantModel", "Plant")
                         .WithMany("Instructions")
-                        .HasForeignKey("PlantsId")
+                        .HasForeignKey("PlantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Plants");
+                    b.Navigation("Plant");
                 });
 
             modelBuilder.Entity("GreenThumb.Models.PlantModel", b =>

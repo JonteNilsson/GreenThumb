@@ -5,8 +5,116 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GreenThumb"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" 
+        Height="450" 
+        Width="450"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        >
+    
+    <!--Grid-->
+    <Grid Background="#FF488E00">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="2.5*"/>
+            <ColumnDefinition />
+            <ColumnDefinition Width="2.5*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        
+        <!--Element-->
+
+        <Image
+            Grid.Column="1"
+            Grid.ColumnSpan="3"
+            Grid.Row="1"
+            Grid.RowSpan="3"
+            Margin="35 35 35 0"
+            Source="C:\Users\jonte\OneDrive\Skrivbord\Newton Kurs material\Databasutveckling\GreenThumb\GreenThumb\Images\green-thumb-logo.png"
+            >
+            <Image.OpacityMask>
+                <LinearGradientBrush>
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Offset="0.1" Color="Black"/>
+                        <GradientStop Offset="0.8" Color="Transparent"/>
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Image.OpacityMask>
+        </Image>
+        <Label
+            Content="Green Thumb"
+            FontSize="55"
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="3"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Center"
+            FontFamily="Colonna MT" 
+            Foreground="#FF107618"
+            />
+        <TextBox
+            Grid.Row="2"
+            Grid.Column="1"
+            Height="30"
+            Width="150"
+            Background="#60FFFFFF"
+            />
+        <PasswordBox
+            Grid.Row="2"
+            Grid.Column="3"
+            Height="30"
+            Width="150"
+            Background="#60FFFFFF"
+            />
+        <Button
+            Name="btnLogin"
+            Content="Login"
+            Foreground="#60FFFFFF"
+            Grid.Column="2"
+            Grid.Row="3"
+            Height="35"
+            Background="#60FFFFFF" Click="btnLogin_Click"
+            />
+        <Button
+            Name="btnRegister"
+            Content="Register"
+            Foreground="#60FFFFFF"
+            Grid.Column="2"
+            Grid.Row="4"
+            Height="35"
+            Background="#60FFFFFF" Click="btnRegister_Click"
+            />
+        <Label
+            Content="Dont have an account ?"
+            Grid.Row="4"
+            Grid.Column="1"
+            FontSize="8"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Margin="0 20 0 0"
+            />
+        <Label
+            Content="Username"
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="5 0 0 5"
+            Foreground="#60E2D609"
+            />
+        <Label
+            Content="Password"
+            Grid.Row="2"
+            Grid.Column="3"
+            Foreground="#60E2D609"
+            Margin="5 0 0 0"
+            />
 
     </Grid>
 </Window>

@@ -1,7 +1,4 @@
-﻿using GreenThumb.Database;
-using GreenThumb.Models;
-using GreenThumb.Repositories;
-using System.Windows;
+﻿using System.Windows;
 
 namespace GreenThumb
 {
@@ -16,22 +13,25 @@ namespace GreenThumb
             InitializeComponent();
 
 
-            using (GTDbContext context = new())
-            {
+            //using (GTDbContext context = new())
+            //{
 
-                GTRepository<InstructionModel> instruction = new(context);
+            //    GTRepository<InstructionModel> instruction = new(context);
 
-                GTRepository<PlantModel> plant = new(context);
+            //    GTRepository<PlantModel> plant = new(context);
 
-
-
-
-
-            };
+            //};
 
         }
 
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
 
+        private void btnRegister_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
