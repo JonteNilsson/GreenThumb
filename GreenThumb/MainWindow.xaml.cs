@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using GreenThumb.Managers;
+using System.Windows;
 
 namespace GreenThumb
 {
@@ -26,12 +27,28 @@ namespace GreenThumb
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            string username = txtUsername.Text;
+            string password = txtPassword.Password;
+
+            var successFullLogin = UserManager.SignInUser(username, password);
+
+            if (successFullLogin != null)
+            {
+                MessageBox.Show("Login success");
+            }
+            else
+            {
+                MessageBox.Show("Login failed");
+            }
+
 
         }
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-
+            RegisterWindow newWindow = new();
+            newWindow.Show();
+            Close();
         }
     }
 }

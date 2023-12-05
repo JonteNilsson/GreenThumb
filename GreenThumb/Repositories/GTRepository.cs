@@ -1,5 +1,7 @@
 ﻿using GreenThumb.Database;
+using GreenThumb.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 
 namespace GreenThumb.Repositories
 {
@@ -32,7 +34,7 @@ namespace GreenThumb.Repositories
             _dbSet.Add(entity);
         }
 
-        // Delete chosen model for deletion
+        // Delete chosen model
         public void Delete(int id)
         {
             T? entityToDelete = GetById(id);
@@ -44,9 +46,16 @@ namespace GreenThumb.Repositories
         }
 
         // Saving changes
-        public void Save()
+        public void Complete()
         {
             _context.SaveChanges();
         }
+
+        public UserModel? FindUser(string username)
+        {
+
+            return _dbSet.OfType<UserModel>().FirstOrDefault(u => u.Username == username);
+        }
+
     }
 }

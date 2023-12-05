@@ -10,6 +10,7 @@ namespace GreenThumb.Database
     public class GTDbContext : DbContext
     {
         private readonly IEncryptionProvider _provider;
+
         public DbSet<GardenModel> Gardens { get; set; }
         public DbSet<InstructionModel> Instructions { get; set; }
         public DbSet<PlantModel> Plants { get; set; }
@@ -18,7 +19,7 @@ namespace GreenThumb.Database
 
         public GTDbContext()
         {
-            _provider = new GenerateEncryptionProvider(KeyManager.GenerateEncryptionKey());
+            _provider = new GenerateEncryptionProvider(KeyManager.GetEncryptionKey());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -28,6 +29,12 @@ namespace GreenThumb.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            modelBuilder.Entity<UserModel>()
+                .HasIndex(u => u.Username)
+                .IsUnique();
+
+
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.UseEncryption(_provider);

@@ -16,5 +16,16 @@ namespace GreenThumb.Models
         public string Password { get; set; } = null!;
 
         public GardenModel? Garden { get; set; }
+
+        public UserModel(string username, string password)
+        {
+            Username = username;
+            Password = password;
+        }
+
+        public UserModel()
+        {
+
+        }
     }
 }
