@@ -102,11 +102,11 @@
             Grid.Row="1"
             Height="25"
             Width="25"
-            Background="#60FFFFFF"
+            Background="Transparent"
+            BorderBrush="Transparent"
             FontSize="15" 
             Margin="124,4,4,39" Click="btnReturnToHome_Click" 
-            
-            
+           
             />
     </Grid>
 </Window>

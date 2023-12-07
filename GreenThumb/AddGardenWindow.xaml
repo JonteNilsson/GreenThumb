@@ -107,5 +107,19 @@
             Foreground="#50FFFFFF" 
             VerticalAlignment="Center"
             />
+        <Button
+            Name="btnReturnToHome"
+            Content="X"
+            Foreground="#60FFFFFF"
+            Grid.Column="5"
+            Grid.Row="1"
+            Background="Transparent"
+            BorderBrush="Transparent"
+            FontSize="9" 
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Width="15"
+            Height="15" Margin="37,0,0,0" Click="btnReturnToHome_Click"
+            />
     </Grid>
 </Window>

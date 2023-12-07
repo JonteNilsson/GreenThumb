@@ -93,6 +93,21 @@ namespace GreenThumb.Repositories
 
         }
 
+        public bool CheckGardenForPlant(List<PlantModel> plants, string plantName)
+        {
+            bool result = false;
+
+            foreach (var plant in plants)
+            {
+                if (plant.Name == plantName)
+                {
+                    result = false;
+                    return result;
+                }
+            }
+            result = true;
+            return result;
+        }
 
     }
 }

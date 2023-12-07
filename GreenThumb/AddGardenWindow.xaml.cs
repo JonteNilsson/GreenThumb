@@ -54,5 +54,13 @@ namespace GreenThumb
                 txtGardenName.Focus();
             }
         }
+
+        private void btnReturnToHome_Click(object sender, RoutedEventArgs e)
+        {
+            HomeWindow newWindow = new();
+            newWindow.Show();
+            Close();
+
+        }
     }
 }

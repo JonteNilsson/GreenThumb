@@ -27,7 +27,7 @@ namespace GreenThumb
 
         }
 
-        private void LoadMyGarden()
+        public void LoadMyGarden()
         {
             using (GTDbContext context = new())
             {
@@ -46,6 +46,8 @@ namespace GreenThumb
                     btnCreateGarden.Visibility = Visibility.Hidden;
                     lblGardenEmpty.Visibility = Visibility.Hidden;
                     lblCreateOne.Visibility = Visibility.Hidden;
+                    btnAddPlantToGarden.Visibility = Visibility.Visible;
+                    lblAddPlantToGarden.Visibility = Visibility.Visible;
                     // Hämta alla planter i den gardenen
                     var plants = garden.Plants.ToList();
 
@@ -72,6 +74,8 @@ namespace GreenThumb
                     lblCreateOne.Visibility = Visibility.Visible;
                     lblGardenEmpty.Visibility = Visibility.Visible;
                     btnCreateGarden.Visibility = Visibility.Visible;
+                    btnAddPlantToGarden.Visibility = Visibility.Hidden;
+                    lblAddPlantToGarden.Visibility = Visibility.Hidden;
                     txtMyGardenName.Text = $"{currentUser!.Username} has no garden!";
                 }
 
@@ -134,6 +138,9 @@ namespace GreenThumb
 
         }
 
+
+
+
         private void btnAddPlantToGarden_Click(object sender, RoutedEventArgs e)
         {
             ListViewItem selectedItem = (ListViewItem)lstAllPlants.SelectedItem;
@@ -144,34 +151,42 @@ namespace GreenThumb
             {
                 using (GTDbContext context = new())
                 {
+                    GTRepository<PlantModel> plantsRepository = new(context);
 
                     PlantModel plantToAdd = (PlantModel)selectedItem.Tag;
 
-                    GardenModel? garden = context.Gardens.Where(u => u.UserId == currentUser!.Id).FirstOrDefault();
+                    GardenModel? garden = context.Gardens.Where(u => u.UserId == currentUser!.Id).Include(p => p.Plants).FirstOrDefault();
 
-                    if (plantToAdd != null)
+                    // Kolla om plantan redan finns i garden
+
+                    var allGardenPlants = garden?.Plants.ToList();
+
+                    bool plantDontExist = plantsRepository.CheckGardenForPlant(allGardenPlants!, plantToAdd.Name);
+
+                    if (plantDontExist == true)
                     {
                         ListViewItem item = new();
                         item.Tag = plantToAdd;
                         item.Content = plantToAdd.Name;
                         lstMyGarden.Items.Add(item);
 
-                        if (garden != null)
-                        {
-                            garden.Plants.Add(plantToAdd);
-                            context.SaveChanges();
-                            LoadMyGarden();
-                        }
-                        else
-                        {
-                            MessageBox.Show($"{currentUser!.Username} has no garden, create one", "Warning");
-                        }
+                        garden!.Plants.Add(plantToAdd);
+                        context.SaveChanges();
+                        LoadMyGarden();
                     }
-                }
+                    else
+                    {
+                        LoadMyGarden();
+                        MessageBox.Show("Plant already exist in garden!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
 
+
+
+                }
             }
             else
             {
+                LoadMyGarden();
                 MessageBox.Show("Select a plant", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
@@ -296,7 +311,22 @@ namespace GreenThumb
             {
                 MessageBox.Show("Select a plant", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+            //if (plantToAdd != null)
+            //{
 
+            //    ListViewItem item = new();
+            //    item.Tag = plantToAdd;
+            //    item.Content = plantToAdd.Name;
+            //    lstMyGarden.Items.Add(item);
+
+            //    if (garden != null)
+            //    {
+            //        garden.Plants.Add(plantToAdd);
+            //        context.SaveChanges();
+            //        LoadMyGarden();
+            //    }
+
+            //}
         }
     }
 }

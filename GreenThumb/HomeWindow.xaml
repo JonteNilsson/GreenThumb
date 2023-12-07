@@ -198,6 +198,7 @@
             Background="#60FFFFFF" Click="btnAddPlantToGarden_Click" 
             />
         <Label
+            Name="lblAddPlantToGarden"
             Content="Add plant to garden"
             Grid.Row="6"
             Grid.Column="3"
@@ -299,7 +300,7 @@
             Width="62"
             Background="#60FFFFFF"
             Grid.ColumnSpan="2" 
-            Margin="0,3,0,3" Click="btnDetailsPlant_Click"
+            Margin="4,3,0,3" Click="btnDetailsPlant_Click"
             />
 
     </Grid>

@@ -42,7 +42,8 @@ namespace GreenThumb
                     {
                         MessageBox.Show("Plant already exists", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
                         txtPlantInstruction.Text = "";
-                        txtPlantInstruction.Focus();
+                        txtPlantName.Text = "";
+                        txtPlantName.Focus();
                         lstInstructions.Items.Clear();
                     }
                     else
@@ -91,6 +92,13 @@ namespace GreenThumb
             {
                 MessageBox.Show("Field is empty!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+        }
+
+        private void btnReturnToHome_Click(object sender, RoutedEventArgs e)
+        {
+            HomeWindow newWindow = new();
+            newWindow.Show();
+            Close();
         }
     }
 }

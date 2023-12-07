@@ -43,6 +43,9 @@ namespace GreenThumb
             else
             {
                 MessageBox.Show("Login failed");
+                txtUsername.Text = "";
+                txtPassword.Password = "";
+                txtUsername.Focus();
             }
 
 

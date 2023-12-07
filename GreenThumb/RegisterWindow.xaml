@@ -114,10 +114,11 @@
             Foreground="#60FFFFFF"
             Grid.Column="5"
             Grid.Row="1"
-            Background="#60FFFFFF"
+            Background="Transparent"
             FontSize="10" 
             Click="btnReturn_Click" 
             Margin="22,0,0,33"
+            BorderBrush="Transparent"
             />
 
     </Grid>
