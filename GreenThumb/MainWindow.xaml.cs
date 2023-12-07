@@ -35,6 +35,10 @@ namespace GreenThumb
             if (successFullLogin != null)
             {
                 MessageBox.Show("Login success");
+
+                HomeWindow newWindow = new();
+                newWindow.Show();
+                Close();
             }
             else
             {

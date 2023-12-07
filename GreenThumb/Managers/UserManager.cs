@@ -46,5 +46,12 @@ namespace GreenThumb.Managers
 
             }
         }
+
+        public static void LogOutUser()
+        {
+            _SignedInUser = null;
+        }
+
+
     }
 }

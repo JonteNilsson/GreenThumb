@@ -13,5 +13,15 @@ namespace GreenThumb.Models
         [Column("plant_id")]
         public int PlantId { get; set; }
         public PlantModel Plant { get; set; } = null!;
+
+        public InstructionModel(string instruction)
+        {
+            Instruction = instruction;
+        }
+
+        public InstructionModel()
+        {
+
+        }
     }
 }

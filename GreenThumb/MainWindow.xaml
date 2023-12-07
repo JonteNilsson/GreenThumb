@@ -118,7 +118,6 @@
             HorizontalAlignment="Left"
             Margin="10,198,0,0" Grid.RowSpan="2"
             />
-
         <Label
             Content="Password"
             Grid.Row="1"

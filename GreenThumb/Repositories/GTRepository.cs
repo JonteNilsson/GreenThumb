@@ -22,6 +22,7 @@ namespace GreenThumb.Repositories
             return _dbSet.ToList();
         }
 
+
         // Find chosen model by ID
         public T? GetById(int id)
         {
@@ -56,6 +57,42 @@ namespace GreenThumb.Repositories
 
             return _dbSet.OfType<UserModel>().FirstOrDefault(u => u.Username == username);
         }
+
+
+        public bool FindUsername(string username)
+        {
+            bool result = true;
+
+            var doesUsernameExist = _dbSet.OfType<UserModel>().FirstOrDefault(u => u.Username == username);
+            if (doesUsernameExist != null)
+            {
+
+                return result;
+            }
+
+            result = false;
+            return result;
+
+
+        }
+
+        public bool ValidatePlantName(string plantName)
+        {
+            bool result = true;
+
+            var doesPlantExist = _dbSet.OfType<PlantModel>().FirstOrDefault(u => u.Name == plantName);
+
+            if (doesPlantExist != null)
+            {
+                return result;
+            }
+
+            result = false;
+            return result;
+
+
+        }
+
 
     }
 }

@@ -13,5 +13,15 @@ namespace GreenThumb.Models
         public List<InstructionModel> Instructions { get; set; } = new();
         public List<GardenModel> Gardens { get; set; } = new();
 
+        public PlantModel(string name, List<InstructionModel> instructions)
+        {
+            Name = name;
+            Instructions = instructions;
+        }
+        public PlantModel()
+        {
+
+        }
+
     }
 }

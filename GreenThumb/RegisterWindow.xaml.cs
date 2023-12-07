@@ -32,13 +32,26 @@ namespace GreenThumb
             {
                 GTRepository<UserModel> newUser = new(context);
 
+                bool isValid = newUser.FindUsername(username);
 
-                UserManager.RegisterUser(username, password);
+                if (isValid)
+                {
+                    MessageBox.Show("Username is taken", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    txtSelectUsername.Text = "";
+                    txtSelectPassword.Password = "";
+                }
+                else
+                {
+                    UserManager.RegisterUser(username, password);
+
+                    MainWindow newWindow = new();
+                    newWindow.Show();
+                    Close();
+
+                }
+
             }
 
-            MainWindow newWindow = new();
-            newWindow.Show();
-            Close();
         }
     }
 }
