@@ -40,16 +40,6 @@ namespace GreenThumb
 
             }
 
-            //List<InstructionModel> instructions = plant.Instructions;
-
-            //foreach (var instruction in instructions)
-            //{
-            //    ListViewItem item = new();
-            //    item.Tag = instruction;
-            //    item.Content = instruction.Instruction;
-
-            //    lstInstructions.Items.Add(item);
-            //}
         }
 
         private void btnReturnToHome_Click(object sender, RoutedEventArgs e)

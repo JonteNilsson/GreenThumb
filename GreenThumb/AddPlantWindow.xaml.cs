@@ -16,6 +16,7 @@ namespace GreenThumb
             InitializeComponent();
         }
 
+        // Lägger till planta, inget konstigt
         private void btnAddPlant_Click(object sender, RoutedEventArgs e)
         {
             string plantName = txtPlantName.Text;
@@ -38,6 +39,7 @@ namespace GreenThumb
 
                     GTRepository<PlantModel> newPlant = new(context);
 
+                    // Skickar plantnamn för att se om det redan finns i listan, returnerar en bool
                     if (newPlant.ValidatePlantName(plantName) == true)
                     {
                         MessageBox.Show("Plant already exists", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -71,6 +73,7 @@ namespace GreenThumb
 
         }
 
+        // Lägger till instrucktion till planta, inget konstigt.
         private void btnAddInstruction_Click(object sender, RoutedEventArgs e)
         {
 
@@ -94,6 +97,7 @@ namespace GreenThumb
             }
         }
 
+        // Öppnar ny homepage
         private void btnReturnToHome_Click(object sender, RoutedEventArgs e)
         {
             HomeWindow newWindow = new();

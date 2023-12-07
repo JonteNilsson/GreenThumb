@@ -19,6 +19,7 @@ namespace GreenThumb
             lblLoggedInUser.Content = currentUser?.Username;
         }
 
+        // Skapar en garden, inget konstigt.
         private void btnAddGarden_Click(object sender, RoutedEventArgs e)
         {
             string gardenName = txtGardenName.Text;
@@ -55,6 +56,7 @@ namespace GreenThumb
             }
         }
 
+        // Tillbaks till Homepage
         private void btnReturnToHome_Click(object sender, RoutedEventArgs e)
         {
             HomeWindow newWindow = new();

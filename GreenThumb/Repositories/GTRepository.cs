@@ -16,26 +16,26 @@ namespace GreenThumb.Repositories
             _dbSet = context.Set<T>();
         }
 
-        // Get all for each model
+        // Hämta ALLA önskade modeller
         public List<T> GetAll()
         {
             return _dbSet.ToList();
         }
 
 
-        // Find chosen model by ID
+        // Hitta model med ID
         public T? GetById(int id)
         {
             return _dbSet.Find(id);
         }
 
-        // Add entity sent to method
+        // Lägg till model
         public void Add(T entity)
         {
             _dbSet.Add(entity);
         }
 
-        // Delete chosen model
+        // Delete model med ID
         public void Delete(int id)
         {
             T? entityToDelete = GetById(id);
@@ -46,12 +46,13 @@ namespace GreenThumb.Repositories
             }
         }
 
-        // Saving changes
+        // Spara ändringar
         public void Complete()
         {
             _context.SaveChanges();
         }
 
+        // Hitta en user med hjälp av användarnamn
         public UserModel? FindUser(string username)
         {
 
@@ -59,6 +60,7 @@ namespace GreenThumb.Repositories
         }
 
 
+        // Tar emot ett usernamn och kollar om det redan existerar i databasen, returnerar en bool
         public bool FindUsername(string username)
         {
             bool result = true;
@@ -76,6 +78,7 @@ namespace GreenThumb.Repositories
 
         }
 
+        // Tar emot ett plantnamn och kollar så att det inte finns i databasen
         public bool ValidatePlantName(string plantName)
         {
             bool result = true;
@@ -93,9 +96,10 @@ namespace GreenThumb.Repositories
 
         }
 
+        // Tar emot en lista och ett plantnamn för att kolla så att plantan inte finns i Garden redan. Returnerar en bool
         public bool CheckGardenForPlant(List<PlantModel> plants, string plantName)
         {
-            bool result = false;
+            bool result;
 
             foreach (var plant in plants)
             {
