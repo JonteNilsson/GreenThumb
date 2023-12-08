@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GreenThumb.Migrations
 {
     [DbContext(typeof(GTDbContext))]
-    [Migration("20231204163324_SeededMoreData")]
-    partial class SeededMoreData
+    [Migration("20231208095038_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -218,10 +218,13 @@ namespace GreenThumb.Migrations
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("nvarchar(450)")
                         .HasColumnName("username");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Username")
+                        .IsUnique();
 
                     b.ToTable("Users");
 
@@ -229,7 +232,7 @@ namespace GreenThumb.Migrations
                         new
                         {
                             Id = 1,
-                            Password = "bZeaGIrC9ZK6KZM562EYIQ==",
+                            Password = "WIFBZvl1BoXnXPpfLDpOvA==",
                             Username = "user"
                         });
                 });

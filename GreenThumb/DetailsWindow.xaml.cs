@@ -14,21 +14,23 @@ namespace GreenThumb
         public DetailsWindow(PlantModel plant)
         {
             InitializeComponent();
-
+            // Sätter plantnamnet i textbox
             txtPlantName.Text = plant.Name;
 
             using (GTDbContext context = new())
             {
                 GTRepository<InstructionModel> instructions = new(context);
-
+                // Hämtar instruktioner för ne specifik planta
                 List<InstructionModel> instructionsList = instructions.GetAll();
                 var plantInstructions = instructionsList.Where(p => p.PlantId == plant.Id).ToList();
 
+                // Plantor kan skapas utan instruktioner
                 if (plantInstructions.Count <= 0)
                 {
                     lstInstructions.Items.Add("Plant has no instructions");
                 }
 
+                // Lägger in instruktioner i listan
                 foreach (var instruction in plantInstructions)
                 {
                     ListViewItem item = new();
@@ -42,6 +44,7 @@ namespace GreenThumb
 
         }
 
+        // öpnnar nytt homewindow
         private void btnReturnToHome_Click(object sender, RoutedEventArgs e)
         {
             HomeWindow newWindow = new();

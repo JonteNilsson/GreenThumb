@@ -1,7 +1,6 @@
 ﻿using EntityFrameworkCore.EncryptColumn.Extension;
 using EntityFrameworkCore.EncryptColumn.Interfaces;
 using EntityFrameworkCore.EncryptColumn.Util;
-using GreenThumb.Managers;
 using GreenThumb.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,7 +18,7 @@ namespace GreenThumb.Database
 
         public GTDbContext()
         {
-            _provider = new GenerateEncryptionProvider(KeyManager.GetEncryptionKey());
+            _provider = new GenerateEncryptionProvider("ThIsIsAsAfEKey$=");
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

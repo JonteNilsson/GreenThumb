@@ -230,7 +230,7 @@ namespace GreenThumb.Migrations
                         new
                         {
                             Id = 1,
-                            Password = "LWAdod+E1okcunZOFtuoeg==",
+                            Password = "WIFBZvl1BoXnXPpfLDpOvA==",
                             Username = "user"
                         });
                 });
