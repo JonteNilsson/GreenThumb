@@ -60,7 +60,7 @@ namespace GreenThumb.Repositories
         }
 
 
-        // Tar emot ett usernamn och kollar om det redan existerar i databasen, returnerar en bool
+        // Tar emot ett username och kollar om det redan existerar i databasen, returnerar en bool
         public bool FindUsername(string username)
         {
             bool result = true;

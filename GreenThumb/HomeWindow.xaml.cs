@@ -86,9 +86,6 @@ namespace GreenThumb
                     txtMyGardenName.Text = $"{currentUser!.Username} has no garden!";
                 }
 
-
-
-
             }
         }
 
@@ -115,11 +112,10 @@ namespace GreenThumb
             }
         }
 
-        // Dynamisk sökningar av plantor
+        // Dynamisk sökning av plantor
         private void txtSearchPlant_TextChanged(object sender, TextChangedEventArgs e)
         {
             string searchPlant = txtSearchPlant.Text;
-
 
             _filteredPlants = _allPlants.Where(p => p.Name.Contains(searchPlant)).ToList();
             lstAllPlants.Items.Clear();
@@ -131,8 +127,6 @@ namespace GreenThumb
                 _allPlants = allPlants.GetAll();
                 // Filterar bokstav för bokstav man matar in och uppdaterar listan efter det.
                 _filteredPlants = _allPlants.Where(p => p.Name.StartsWith(searchPlant, StringComparison.OrdinalIgnoreCase)).ToList();
-
-                //_filteredPlants = _allPlants;
 
                 foreach (var plant in _filteredPlants)
                 {
@@ -150,7 +144,7 @@ namespace GreenThumb
 
 
 
-
+        // Lägger till planta till garden i homescreen
         private void btnAddPlantToGarden_Click(object sender, RoutedEventArgs e)
         {
             ListViewItem selectedItem = (ListViewItem)lstAllPlants.SelectedItem;
@@ -192,8 +186,6 @@ namespace GreenThumb
                         MessageBox.Show("Plant already exist in garden!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
 
-
-
                 }
             }
             else
@@ -223,12 +215,11 @@ namespace GreenThumb
         // Ta bort planta
         private void btnDeletePlant_Click(object sender, RoutedEventArgs e)
         {
-            // Kolla selectade item
+
             ListViewItem selectedItem = (ListViewItem)lstAllPlants.SelectedItem;
-            // nullchecka
+
             if (selectedItem != null)
             {
-                // packa upp
                 PlantModel plantToDelete = (PlantModel)selectedItem.Tag;
 
                 using (GTDbContext context = new())
@@ -251,14 +242,14 @@ namespace GreenThumb
             }
         }
 
+        // Visa details om en vald planta
         private void btnDetailsPlant_Click(object sender, RoutedEventArgs e)
         {
-            // Läs selectat item från lista
+
             ListViewItem selectedItem = (ListViewItem)lstAllPlants.SelectedItem;
-            // nullcheck
+
             if (selectedItem != null)
             {
-                // Packa upp och skicka till details window
                 PlantModel plantToSend = (PlantModel)selectedItem.Tag;
 
                 DetailsWindow newWindow = new(plantToSend);
@@ -302,13 +293,9 @@ namespace GreenThumb
                     }
                 }
             }
-
-
-
-
         }
 
-        // TODO: Ge user möjlighet att ta bort plantor från sin garden
+        // Ta bort plant från Garden
 
         private void btnDeletePlantFromGarden_Click(object sender, RoutedEventArgs e)
         {
@@ -320,12 +307,10 @@ namespace GreenThumb
                 {
                     var garden = context.Gardens.Where(u => u.UserId == currentUser!.Id).Include(p => p.Plants).FirstOrDefault();
 
-                    PlantModel? plantToDelete = garden.Plants.FirstOrDefault(p => p.Id == ((PlantModel)selectedItem.Tag).Id);
-
+                    PlantModel? plantToDelete = garden?.Plants.FirstOrDefault(p => p.Id == ((PlantModel)selectedItem.Tag).Id);
 
                     if (garden != null && plantToDelete != null)
                     {
-
 
                         garden.Plants.Remove(plantToDelete);
                         context.SaveChanges();

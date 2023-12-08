@@ -104,14 +104,18 @@ namespace GreenThumb.Migrations
                 columns: new[] { "id", "name" },
                 values: new object[,]
                 {
-                    { 1, "Sunflower" },
-                    { 2, "Lilly" },
-                    { 3, "Rose" },
-                    { 4, "Cactus" },
-                    { 5, "Bamboo" },
+                    { 1, "Rose" },
+                    { 2, "Tulip" },
+                    { 3, "Daisy" },
+                    { 4, "Sunflower" },
+                    { 5, "Lily" },
                     { 6, "Orchid" },
-                    { 7, "Snake plant" },
-                    { 8, "Eucalyptus" }
+                    { 7, "Daffodil" },
+                    { 8, "Peony" },
+                    { 9, "Cactus" },
+                    { 10, "Eucalyptus" },
+                    { 11, "Lavender" },
+                    { 12, "Marigold" }
                 });
 
             migrationBuilder.InsertData(
@@ -120,22 +124,46 @@ namespace GreenThumb.Migrations
                 values: new object[] { 1, "WIFBZvl1BoXnXPpfLDpOvA==", "user" });
 
             migrationBuilder.InsertData(
-                table: "Gardens",
-                columns: new[] { "id", "name", "user_id" },
-                values: new object[] { 1, "Eden", 1 });
-
-            migrationBuilder.InsertData(
                 table: "Instructions",
                 columns: new[] { "id", "instruction", "plant_id" },
                 values: new object[,]
                 {
-                    { 1, "Water plant", 1 },
-                    { 2, "Water Plant", 2 },
-                    { 3, "Fertilize", 1 },
-                    { 4, "Remove weed", 3 },
-                    { 5, "Replant", 5 },
-                    { 6, "Add soil", 7 },
-                    { 7, "Cut away weeds", 4 }
+                    { 1, "Keep soil consistently moist", 1 },
+                    { 2, "Water moderately, let soil dry between.", 2 },
+                    { 3, "Water when top inch is dry.", 3 },
+                    { 4, "Water deeply and consistently.", 4 },
+                    { 5, "Keep soil consistently moist.", 5 },
+                    { 6, "Water sparingly, let the medium dry.", 6 },
+                    { 7, "Water moderately, let soil dry.", 7 },
+                    { 8, "Water deeply when top inch is dry", 8 },
+                    { 9, "Water sparingly, let soil dry out.", 9 },
+                    { 10, "Water regularly when young, let soil dry.", 10 },
+                    { 11, "Water sparingly, let soil dry.", 11 },
+                    { 12, "Water sparingly, let soil dry.", 12 },
+                    { 13, "Plant in well-drained soil, with sunlight.", 1 },
+                    { 14, "Plant bulbs in fall, in well-drained soil.", 2 },
+                    { 15, "Plant in spring, in sunny location.", 3 },
+                    { 16, "Plant seeds in spring, in fertile soil.", 4 },
+                    { 17, " Plant bulbs in spring, in partial shade.", 5 },
+                    { 18, "Plant in orchid mix, with good drainage.", 6 },
+                    { 19, "Plant bulbs in fall, in well-drained soil.", 7 },
+                    { 20, "Plant in fertile, well-drained soil.", 8 },
+                    { 21, "Plant in cactus mix, in full sunlight.", 9 },
+                    { 22, " Plant in well-drained soil, in sunlight.", 10 },
+                    { 23, "Plant in well-drained soil, in sunlight.", 11 },
+                    { 24, "Plant in well-drained soil, in sunlight.", 12 },
+                    { 25, "Prune in late winter to encourage new growth.", 1 },
+                    { 26, "Mulch in winter for added insulation.", 2 },
+                    { 27, "Deadhead spent blooms for prolonged flowering.", 3 },
+                    { 28, "Provide support for tall varieties.", 4 },
+                    { 29, "Apply a balanced fertilizer in spring.", 5 },
+                    { 30, "Provide indirect sunlight for optimal growth.", 6 },
+                    { 31, "Allow foliage to yellow before removing.", 7 },
+                    { 32, "Stake heavy blooms to prevent drooping.", 8 },
+                    { 33, "Protect from frost during winter.", 9 },
+                    { 34, "Prune for bushier growth.", 10 },
+                    { 35, "Prune after flowering to maintain shape.", 11 },
+                    { 36, "Pinch back young plants for bushier growth.", 12 }
                 });
 
             migrationBuilder.CreateIndex(

@@ -12,8 +12,6 @@ namespace GreenThumb
         public MainWindow()
         {
             InitializeComponent();
-
-
         }
 
         // Logga in användare
@@ -44,8 +42,6 @@ namespace GreenThumb
                 txtPassword.Password = "";
                 txtUsername.Focus();
             }
-
-
         }
 
         // Öppna register window

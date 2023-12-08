@@ -14,13 +14,13 @@ namespace GreenThumb
         public DetailsWindow(PlantModel plant)
         {
             InitializeComponent();
-            // Sätter plantnamnet i textbox
+            // Sätter plant namnet i textbox
             txtPlantName.Text = plant.Name;
 
             using (GTDbContext context = new())
             {
                 GTRepository<InstructionModel> instructions = new(context);
-                // Hämtar instruktioner för ne specifik planta
+                // Hämtar instruktioner för en specifik planta
                 List<InstructionModel> instructionsList = instructions.GetAll();
                 var plantInstructions = instructionsList.Where(p => p.PlantId == plant.Id).ToList();
 
